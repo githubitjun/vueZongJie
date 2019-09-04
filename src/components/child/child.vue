@@ -4,6 +4,9 @@
 
 <script>
 export default {
+    props:{
+        oneStr:String
+    },
     inject: ['text','num'], //这是vue里面的依赖注入  也可以实现子组件调用父组件的方法
                             // 也可以实现 父组件往子组件里面传递数据
 
@@ -32,7 +35,7 @@ export default {
             // }
             // this.text()
             console.log(this.num);
-            
+            console.log(this.oneStr);
         }
     },
 }

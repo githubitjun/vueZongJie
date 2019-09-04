@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 import Child from '../components/child/child.vue'
 import Parent from '../components/parent/parent.vue'
+import Counter from '../components/parent/counter.vue'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path:'/parent',
       name:'Parent',
       component:Parent
+    },
+    {
+      path:'/counter',
+      name:'Parent',
+      component:Counter
     }
   ]
 })

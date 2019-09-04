@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="inputId">
+    <!-- <p id="showId"></p> -->
+    <input type="text" id="showId">
+</body>
+<!-- 
+        Object.defineProperty(obj, prop, descriptor)
+        语法中，obj是需要操作的目标对象，prop是需要定义或修改的属性名字，descriptor所拥有的特性。
+
+        当获取值的时候触发get函数，当设置值的时候触发set函数。设置的新的值由参数value拿到
+     -->
+<script>
+    let obj = {}
+    let inputId = document.getElementById('inputId')
+    let showId = document.getElementById('showId')
+
+    Object.defineProperty(obj, 'text', {
+        get: function () {
+            return obj
+        },
+        set: function (value) {
+            showId.value = value
+        }
+    })
+    inputId.addEventListener('keyup', function (e) {
+        obj.text = e.target.value
+    })
+    Object.defineProperty(obj, 'text1', {
+        get: function () {
+            return obj
+        },
+        set: function (value) {
+            inputId.value = value
+        }
+    })
+    showId.addEventListener('keyup', function (e) {
+        obj.text1 = e.target.value
+    })
+
+</script>
+
+</html>
