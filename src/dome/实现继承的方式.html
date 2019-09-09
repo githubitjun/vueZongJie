@@ -57,7 +57,7 @@
 
     // console.log(wangsicong.car);
 
-    
+
     // ----------------------------
     // function Text1 (){
     //     this.color = ['red','pink','green']
@@ -71,18 +71,95 @@
     // var text1 = new Text2()
     // console.log(text1.color);
 
-    function Text1 (){
-        this.color = ['red','pink','green']
-    }
-    function Text2 (){
-        Text1.call(this)
-    }
+    // function Text1 (){
+    //     this.color = ['red','pink','green']
+    // }
+    // function Text2 (){
+    //     Text1.call(this)
+    // }
 
-    var text = new Text2()
-    text.color.push('block')
-    console.log(text);
-    var text1 = new Text2()
-    console.log(text1.color);
+    // var text = new Text2()
+    // text.color.push('block')
+    // console.log(text);
+    // var text1 = new Text2()
+    // console.log(text1.color);
+
+    //--------------------
+    // 原型式继承
+    // function object (o){
+    //     function F(){};
+    //     F.prototype = o;
+    //     return new F()
+    // }
+
+    // var  text1 = {
+    //     name:'张三',
+    //     color: ['red','pink','green']
+    // }
+
+    // var newObj1 = object(text1)
+    // newObj1.color.push('block')
+    // newObj1.name = '李四'
+    // console.log(text1);
+    // console.log(newObj1);
+
+    // var obj2 = object(text1)
+    // obj2.color.push('yellow')
+    // console.log(obj2);
+
+    //------------------
+    //寄生式继承
+    // function object (o){
+    //     function F(){};
+    //     F.prototype = o;
+    //     return new F()
+    // }
+
+    // var  text1 = {
+    //     name:'张三',
+    //     color: ['red','pink','green']
+    // }
+
+    // function persone(obj){
+    //     var clone = object(obj);
+    //     clone.sayHi = function (){
+    //         console.log('hi');
+    //     }
+    //     return clone
+    // }
+
+    // var obj1 = persone(text1)
+    // console.log(obj1);
+
+    //---------------------------
+    //寄生式组合继承
+    function object(o) {
+        function F() { }
+        F.prototype = o;
+        return new F();
+    }
+    function inheritPrototype(subType, superType) {
+        var prototype = object(superType.prototype); //创建对象
+        prototype.constructor = subType; //增强对象
+        subType.prototype = prototype; //指定对象
+    }
+    function Text1(name) {
+        this.name = name;
+        this.color = ['red', 'blue', 'green'];
+    }
+    Text1.prototype.sayName = function () {
+        console.log(this.name);
+    }
+    function Text2(name, age) {
+        Text1.call(this, name)
+        this.age = age
+    }
+    inheritPrototype(Text2, Text1)
+    Text2.prototype.sayAge = function () {
+        console.log(this.age);
+    }
+    var obj = new Text2('张三',28)
+    obj.sayName()
 </script>
 
 </html>
