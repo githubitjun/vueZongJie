@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 第一种混入式
+    // var wagjianlin = {
+    //     car:2000,
+    //     home:5000
+    // }
+    // var wangsicong ={
+
+    // }
+    // for(var key in wagjianlin){
+    //     wangsicong[key] = wagjianlin[key]
+    // }
+    // console.log(wangsicong);
+
+    // 替换原型式
+    // var wagjianlin = {
+    //     car: 2000,
+    //     home: 5000
+    // }
+    // function Parens(name, age) {
+    //     this.name = name;
+    //     this.age = age
+    // }
+
+    // Parens.prototype = wagjianlin
+    // var wangsicong = new Parens('王', 28)
+    // console.log(Parens.prototype.constructor === Parens);
+    // console.log(wangsicong.home);
+
+    // 混合式继承
+    // var wagjianlin = {
+    //     car:2000,
+    //     home:5000
+    // }
+    // function Parens (name,age){
+    //      this.name = name;
+    //      this.age = age
+    // }
+
+    // var wangsicong = new Parens('王',28)
+    // for(var key in wagjianlin){
+    //     Parens.prototype[key] = wagjianlin[key]
+    // }
+
+    // console.log(wangsicong.car);
+
+    
+    // ----------------------------
+    // function Text1 (){
+    //     this.color = ['red','pink','green']
+    // }
+    // function Text2 (){
+    // }
+    // Text2.prototype = new Text1()
+    // var text = new Text2()
+    // text.color.push('block')
+    // console.log(text);
+    // var text1 = new Text2()
+    // console.log(text1.color);
+
+    function Text1 (){
+        this.color = ['red','pink','green']
+    }
+    function Text2 (){
+        Text1.call(this)
+    }
+
+    var text = new Text2()
+    text.color.push('block')
+    console.log(text);
+    var text1 = new Text2()
+    console.log(text1.color);
+</script>
+
+</html>
