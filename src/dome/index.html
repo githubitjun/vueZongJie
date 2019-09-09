@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+    </canvas>
+</body>
+<script>
+    // var arr =[1,2,3,4]
+    // // arr.splice(0,1)
+    // console.log(arr.splice(0,2));
+    // console.log(arr.shift());
+    // console.log(arr);
+
+    //数组去重
+    // var arr = [1,2,2,3,4,3,5]
+    // var set = new Set(arr)
+    // console.log([...set]);
+
+    // 去除重复的字符串
+    // var set = new Set('asasde')
+    // console.log([...set].join(''))
+
+    //另一种数组去重的方法
+    // var arr = [1,2,1,2,3]
+    // var item = new Set(arr)
+    // var arr1 = Array.from(item)
+    // console.log(arr1);
+
+    // Object is 的用法
+    //    console.log( Object.is('1','1'));
+    //    console.log(Object.is({},{}));
+    //    console.log(Object.is([],[]));
+    //    console.log(Object.is(NaN,NaN));
+
+    //Object.assing 实现合并对象,是浅拷贝
+    //    var obj1 = {a:1,b:2}
+    //    var obj2 = {c:3}
+    //    console.log(Object.assign(obj1,obj2));
+
+    //    var str = 'holle'
+    //    console.log(Array.from(str));
+    //    var arr = [1,2,3,4,5]
+    //    var set = new Set(arr)
+    // Array.from(set,item=>{item+1})
+    // console.log(Array.from(set,item=> item+1));
+
+    // let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    // arr = arr.concat(arr)
+    // arr = arr.concat(arr)
+    // arr = arr.concat(arr)
+    // arr = arr.concat([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    // console.table(arr)
+
+    // var arr = Array.apply(null, { length: 810 })
+    //     .forEach((item, index) => {
+    //         return {
+    //             id: index,
+    //             number: index % 9 + 1
+    //         }
+    //     })
+    //     console.log(arr);
+
+    // const person = {
+    //     name:'MMS',
+    //     say:function (){
+    //         return  ()=>{
+    //             console.log(this.name);
+    //         }
+    //     }
+    // }
+    // // console.log(person.say());
+    // person.say()() // 
+
+    // setTimeout(()=>console.log('a'),0)
+    // var p = new Promise((resolve)=>{
+    //     console.log('b');
+    //     resolve()
+    // })
+    // p.then(()=>console.log('c'))
+    // p.then(()=>console.log('d'))
+    // console.log('e');
+    // b e c d a 
+
+    //改变this的指向
+    // var name = '张三'
+    //  function sayHi (){
+    //         console.log(this.name);
+    //     }
+    // var obj = {
+    //     name:'李四',
+
+    // }
+    // sayHi.call(obj)
+
+    // function text() {
+    //     var arr = []
+    //     for (var i = 0; i < 3; i++) {
+    //         arr[i] = function () {
+    //             console.log(i);
+    //             return i
+    //         }
+    //     }
+    //     return arr
+    // }
+    // var text1 = text()[0]
+    // var text2 = text()[1]
+    // var text3 = text()[2]
+    // text1()
+    // text2()
+    // text3()
+
+     function text() {
+        var arr = []
+        for (var i = 0; i < 3; i++) {
+            arr[i] = function (num) {
+                return function(){
+                    console.log(num);
+                    return num
+                }
+            }(i)
+        }
+        return arr
+    }
+    var text1 = text()[0]
+    var text2 = text()[1]
+    var text3 = text()[2]
+    text1()
+    text2()
+    text3()
+
+</script>
+
+</html>
