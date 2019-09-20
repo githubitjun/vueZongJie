@@ -11,6 +11,8 @@
 <body>
     <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
     </canvas>
+    <input type="reset" value="Reset Form">
+
 </body>
 <script>
     // var arr =[1,2,3,4]
@@ -118,24 +120,173 @@
     // text2()
     // text3()
 
-     function text() {
-        var arr = []
-        for (var i = 0; i < 3; i++) {
-            arr[i] = function (num) {
-                return function(){
-                    console.log(num);
-                    return num
-                }
-            }(i)
-        }
-        return arr
+    //  function text() {
+    //     var arr = []
+    //     for (var i = 0; i < 3; i++) {
+    //         arr[i] = function (num) {
+    //             return function(){
+    //                 console.log(num);
+    //                 return num
+    //             }
+    //         }(i)
+    //     }
+    //     return arr
+    // }
+    // var text1 = text()[0]
+    // var text2 = text()[1]
+    // var text3 = text()[2]
+    // text1()
+    // text2()
+    // text3()
+
+    // console.log(a);
+    // console.log(b);
+
+    // let 声明的变量只在当前代码块{}有效,有块级作用域
+    // if (true) {
+    //     var a = 10
+    //     let b = 20
+    // }
+    // console.log(a);
+    // console.log(b);
+
+    // var z = 10 
+    // function foo (){
+    //     console.log(z);
+    // }
+    // (function(funArg){
+    //     var z = 20
+    //     funArg()
+    // })(foo)
+
+    // var a =100
+    // function test(){
+    //     var b = 2* a;
+    //     var a = 200;
+    //     var c = c/2;
+    //     alert(b)
+    //     alert(c)
+    // }
+    // test()
+
+    // if (!('a' in window)) {
+    //     var a = 10
+    // }
+    // console.log(a);
+    // console.log(!('a' in window));
+
+    // var count = 0;
+    // console.log(typeof count === 'number');//true
+    // console.log(!!typeof count === 'number');//false  
+    // console.log(!!typeof count);//true  
+
+    // var len = 4
+    // while(len--){
+    //     setTimeout(function(){
+    //         console.log(len);
+    //     })
+    //     console.log(len);
+    // }
+
+    // var arr = [
+    //     1,
+    //     'abc',
+    //     function(){
+    //         console.log(666);
+    //     }
+    // ]
+    // alert(arr[2]()) // undefined
+    // arr[2]()//666
+
+    // var test = (function(a){
+    //     this.a = a;
+    //     return function(b){
+    //         return this.a +b
+    //     }
+    // })(
+    //     (function(a,b){
+    //         return a
+    //     })(1,2)
+    // )
+    // console.log(test(2));
+
+    // function test (){
+    //     d = 5
+    // }
+    // test()
+    // console.log(d);
+
+
+    // (function(){
+    //     var a = b = 3;
+    //     c = 4
+    // })()
+    // console.log(typeof a === 'undefined');//true
+    // console.log(typeof b === 'undefined');// false
+    // // console.log(a);
+    // console.log(c);
+    // console.log(b);
+
+
+    // function log(x,y='world'){
+    //     console.log(x,y);
+    // }
+    // log('Hello','Child');
+
+    // (function(x){
+    //     delete x;
+    //     alert(x);
+    // })(1+5)
+
+    //时间格式的转换
+    function gitTime () {
+        let time = new Date()
+        var y = time.getFullYear()
+        var m = time.getMonth() + 1
+        var d = time.getDate()
+        // var h = time.getHours()
+        // var mm = time.getMinutes()
+        // var s = time.getSeconds()
+        return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + time.toTimeString().substr(0,8)
     }
-    var text1 = text()[0]
-    var text2 = text()[1]
-    var text3 = text()[2]
-    text1()
-    text2()
-    text3()
+    console.log(gitTime());
+
+
+    //随机取10--100的值 存入数组 并排序
+    // function sortNumber(a, b) {
+    //     return a - b;//升序
+    //     //return b-a;//降序
+    // }
+    // //js实现随机选取10–100之间的10个数字，存入一个数组，并排序
+    // var iArray = [];
+    // function getRandom(iStart, iEnd) {
+    //     var iChoice = iStart - iEnd + 1;
+    //     return Math.abs(Math.floor(Math.random() * iChoice)) + iStart;
+    // }
+    // for (var i = 0; i < 10; i++) {
+    //     iArray.push(getRandom(10, 100))
+    // }
+    // iArray.sort(sortNumber);
+    // console.log(iArray)
+
+
+
+    //-----------------------------------
+    // function sortNumber(a, b) {
+    //     return a - b;//升序
+    //     // return b-a;//降序
+    // }
+    // //JS实现随机选取10-100之间的10个数字,存入一个数组，并排序
+    // var iArray = [];
+    // function getRamdon(start, end) {
+    //     var temp = start - end + 1;   //91
+    //     return Math.abs(Math.floor(Math.random() * temp)) + start;   //从start开始
+    // }
+    // for (var i = 0; i < 10; i++) {
+    //     iArray.push(getRamdon(10, 100))   //循环10次，添加10个数在数组里
+    // }
+    // iArray.sort(sortNumber);
+    // console.log(iArray)
 
 </script>
 
