@@ -29,6 +29,11 @@ export default new Router({
       path:'/counter',
       name:'Parent',
       component:Counter
+    },
+    {
+      path:'/event',
+      name:'Event',
+      component:()=> import('@/components/event/event.vue')
     }
   ]
 })
