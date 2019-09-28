@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+
+        <!-- <canvas id="stockGraph" width="200" height="200" style="border:1px solid #000000;">
+
+        </canvas> -->
+
+        <canvas id="canvas" width="200" height="200" style="border:1px solid black">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+    </div>
+</body>
+<script>
+    // // var canvas = document.getElementById('stockGraph')
+    // // console.log(canvas.getContext('2d'));
+    // // if (canvas.getContext) {
+    // //     var ctx = canvas.getContext('2d')
+
+    // //     // ctx.fillStyle = "rgb(200,0,0)";
+    // //     // ctx.fillRect(20, 20, 50, 50);
+
+    // //     // ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+    // //     // ctx.fillRect(30, 30, 55, 50);
+
+    // //     //ctx.strokeRect(20, 20, 30, 30)
+
+    // //     //ctx.fillRect(25, 25, 100, 100);
+    // //     // ctx.clearRect(45, 45, 60, 60);
+    // //     // ctx.strokeRect(50, 50, 50, 50);
+
+    // //     // ctx.beginPath();
+    // //     // ctx.moveTo(75, 50);
+    // //     // ctx.lineTo(100, 75);
+    // //     // ctx.lineTo(100, 25);
+    // //     // ctx.fill();
+    // // }
+
+    // var canvas = document.getElementById('stockGraph');
+    // var ctx = canvas.getContext('2d');
+    // var raf;
+    // var H = 300, W = 500;
+
+    // var ball = {
+    //     x: 12,
+    //     y: 12,
+    //     vx: 0.3,
+    //     vy: 0.2,
+    //     radius: 10,
+    //     color: 'blue',
+    //     draw: function () {
+    //         // for (var i = 0; i < 5; i++) {
+    //         //     ctx.beginPath();
+    //         //     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    //         //     ctx.closePath();
+    //         //     ctx.fillStyle = this.color;
+    //         //     ctx.fill();
+    //         // }
+
+
+
+    //         for (var i = 0; i < 5; i++) {
+    //             var tempR = Math.floor(Math.random() * 255);
+    //             var tempG = Math.floor(Math.random() * 255);
+    //             var tempB = Math.floor(Math.random() * 255);
+    //             ctx.fillStyle = 'rgb(' + tempR + ',' + tempG + ',' + tempB + ')';
+    //             var tempW = Math.floor(Math.random() * W);
+    //             var tempH = Math.floor(Math.random() * H);
+    //             var tempR = Math.floor(Math.random() * 20);
+    //             ctx.beginPath();
+    //             ctx.arc(tempW, tempH, tempR, 0, Math.PI * 2,true);
+    //             ctx.fill();
+    //         }
+    //     }
+    // };
+
+
+    // function draw() {
+    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //     ball.draw();
+    //     ball.x += ball.vx;
+    //     ball.y += ball.vy;
+    //     raf = window.requestAnimationFrame(draw);
+
+    //     if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+    //         ball.vy = -ball.vy;
+    //     }
+    //     if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+    //         ball.vx = -ball.vx;
+    //     }
+    // }
+
+    // raf = window.requestAnimationFrame(draw);
+
+    // // canvas.addEventListener('mouseover', function (e) {
+
+    // // });
+    // // canvas.addEventListener('mouseover', function (e) {
+
+    // // });
+
+    // // canvas.addEventListener('mouseout', function (e) {
+    // //     window.cancelAnimationFrame(raf);
+    // // });
+    // // canvas.addEventListener('mouseout', function (e) {
+    // //     window.cancelAnimationFrame(raf1);
+    // // });
+
+
+
+
+
+    // ball.draw();
+
+
+    var canvas = document.getElementById('canvas');
+    //存储画布宽高
+    var H = 200, W = 200;
+    //存储小球个数
+    var NUM = 10;
+    //存储小球
+    var balls = [];
+    function getBalls() {
+        if (canvas.getContext) {
+            var cxt = canvas.getContext('2d');
+            for (var i = 0; i < NUM; i++) {
+                var tempR = Math.floor(Math.random() * 255);
+                var tempG = Math.floor(Math.random() * 255);
+                var tempB = Math.floor(Math.random() * 255);
+                var tempColor = 'rgb(' + tempR + ',' + tempG + ',' + tempB + ')';
+                var tempR = Math.floor(Math.random() * 10);
+                var tempX = Math.floor(Math.random() * (W - tempR) + tempR);
+                var tempY = Math.floor(Math.random() * (H - tempR) + tempR);
+
+                var tempBall = {
+                    x: tempX,
+                    y: tempY,
+                    r: tempR,
+                    stepX: Math.floor(Math.random() * 13 - 6),
+                    stepY: Math.floor(Math.random() * 13 - 6),
+                    color: tempColor
+                };
+                balls.push(tempBall);
+            }
+        }
+    }
+    function updateBalls() {
+        for (var i = 0; i < balls.length; i++) {
+            balls[i].x += balls[i].stepX;
+            balls[i].y += balls[i].stepY;
+            bumpTest(balls[i]);
+        }
+    }
+    function bumpTest(ele) {
+        //左侧
+        if (ele.x <= ele.r) {
+            ele.x = ele.r;
+            ele.stepX = -ele.stepX;
+        }
+        //右侧
+        if (ele.x >= W - ele.r) {
+            ele.x = W - ele.r;
+            ele.stepX = -ele.stepX;
+        }
+        //上侧
+        if (ele.y <= ele.r) {
+            ele.y = ele.r;
+            ele.stepY = -ele.stepY;
+        }
+        //下侧
+        if (ele.y >= H - ele.r) {
+            ele.y = H - ele.r;
+            ele.stepY = -ele.stepY;
+        }
+    }
+    function renderBalls() {
+        //重置画布高度，达到清空画布的效果
+        canvas.height = H;
+        if (canvas.getContext) {
+            var cxt = canvas.getContext('2d');
+            for (var i = 0; i < balls.length; i++) {
+                cxt.beginPath();
+                cxt.arc(balls[i].x, balls[i].y, balls[i].r, 0, 2 * Math.PI);
+                cxt.fillStyle = balls[i].color;
+                cxt.closePath();
+                cxt.fill();
+            }
+        }
+
+    }
+    getBalls();
+    clearInterval(oTimer);
+    var oTimer = setInterval(function () {
+        //更新小球运动状态
+        updateBalls();
+        //渲染小球
+        renderBalls();
+    }, 50);
+</script>
+
+</html>

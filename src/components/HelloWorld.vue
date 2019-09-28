@@ -22,7 +22,7 @@
         layout="total, sizes, prev, pager, next, jumper,->"
         :total="400"
       ></el-pagination>
-      <span class="pageDi">第1/1页</span>
+      <span class="pageDi">第{{num1}}/{{num}}页</span>
     </div>
   </div>
 </template>
@@ -32,6 +32,8 @@ import Person from "../components/slot/slot1";
 export default {
   data() {
     return {
+      num1:1,
+      num:10,
       tableData: [{
           date: '2016-05-02',
           name: '王小虎',
@@ -53,7 +55,12 @@ export default {
   },
   components: {
     Person
-  }
+  },
+  methods: {
+    handleCurrentChange(val){
+      this.num1 = val
+    }
+  },
 };
 </script>
 

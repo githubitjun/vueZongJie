@@ -9,9 +9,11 @@
 </head>
 
 <body>
-    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+    <!-- <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
     </canvas>
-    <input type="reset" value="Reset Form">
+    <input type="reset" value="Reset Form"> -->
+    <h1>关于<time datatime="2019-09-27" >2019年09月27号</time>的舞会的通知</h1>
+    发布日期<time datatime="2019-09-27" pubdate>2019年09月27号</time>
 
 </body>
 <script>
@@ -239,17 +241,17 @@
     // })(1+5)
 
     //时间格式的转换
-    function gitTime () {
-        let time = new Date()
-        var y = time.getFullYear()
-        var m = time.getMonth() + 1
-        var d = time.getDate()
-        // var h = time.getHours()
-        // var mm = time.getMinutes()
-        // var s = time.getSeconds()
-        return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + time.toTimeString().substr(0,8)
-    }
-    console.log(gitTime());
+    // function gitTime () {
+    //     let time = new Date()
+    //     var y = time.getFullYear()
+    //     var m = time.getMonth() + 1
+    //     var d = time.getDate()
+    //     // var h = time.getHours()
+    //     // var mm = time.getMinutes()
+    //     // var s = time.getSeconds()
+    //     return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d) + ' ' + time.toTimeString().substr(0,8)
+    // }
+    // console.log(gitTime());
 
 
     //随机取10--100的值 存入数组 并排序
@@ -287,7 +289,13 @@
     // }
     // iArray.sort(sortNumber);
     // console.log(iArray)
+    
 
+    //解构赋值  交换两个变量的值
+    // var num1 = 10;
+    // var num2 = 20;
+    // [num1,num2] = [num2,num1]
+    // console.log(num1,num2);
 </script>
 
 </html>
