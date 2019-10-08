@@ -1,24 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<div id="box">
+    <div>
+        <a href="">
+            <span>
+                <p></p>
+                <a href=""></a>
+            </span>
+        </a>
+    </div>
+    <span></span>
+    <p></p>
+    <p>
+        <span></span>
+        <span></span>
+    </p>
+</div>
+
 <body>
     <script>
+
+
         //遍历dom 树
-        // var arr = []
-        // function set(ele){
-        //     var child = ele.children;
-        //     for(var i =0;i<child.length;i++){
-        //         arr.push(child[i])
-        //         set(child[i])
+        // function get(ele) {
+        //     var arr = []
+        //     function set(ele) {
+        //         var child = ele.children;
+        //         for (var i = 0; i < child.length; i++) {
+        //             arr.push(child[i])
+        //             set(child[i])
+        //         }
+
         //     }
+        //     set(ele)
+        //     return arr
         // }
-        // set(document)
-        // console.log(arr);
+        // console.log(get(document));
+
+        // var arr = []
+        //     function set(ele) {
+        //         var child = ele.children;
+        //         for (var i = 0; i < child.length; i++) {
+        //             arr.push(child[i])
+        //             set(child[i])
+        //         }
+
+        //     }
+        //     set(document)
+        //     console.log(arr);
+
+        //方法一
+        // let father = document.getElementById('box')
+        // function set(ele) {
+        //     var arr = []
+        //     var child = ele.children;
+        //     for (var i = 0; i < child.length; i++) {
+        //         arr.push(child[i])
+        //         arr =  arr.concat(set(child[i]))  
+        //     }
+        //     return arr
+        // }
+        // console.log(set(document));
+
+        // 方法二 
+        // let father = document.getElementById('box')
+        // function get() {
+        //     var arr = []
+        //     function set(ele) {
+        //         var child = ele.children;
+        //         for (var i = 0; i < child.length; i++) {
+        //             arr.push(child[i])
+        //             set(child[i])
+        //         }
+        //         return arr
+        //     }
+        //     return set
+        // }
+        // console.log(get()(father));
 
 
         //累加求和
@@ -31,7 +96,8 @@
     //    console.log(text(5));
 
 
-        
+
     </script>
 </body>
+
 </html>

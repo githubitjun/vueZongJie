@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="time">
+    <input type="date">
+    <input type="datetime">
+    <input type="datetime-local">
+    <input type="month" value="2010-10">
+    <input type="color">
+</body>
+<script>
+    // var baz 
+    // (function(){
+    //     var foo = 10;
+    //     var bar = 20;
+    //     baz = function(){
+    //         return foo * bar
+    //     }
+    // })()
+    // console.log(baz());
+
+    function displayError(message){
+        displayError.numTimeExecuted++;
+        console.log(displayError.numTimeExecuted);
+        message++
+        console.log(message);
+    }
+    displayError.numTimeExecuted = 0
+    displayError(20)
+    displayError(20)
+    displayError(20)
+</script>
+</html>
