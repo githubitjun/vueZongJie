@@ -85,6 +85,25 @@
         // }
         // console.log(get()(father));
 
+        // 方法三
+        let father = document.getElementById('box')
+        function get() {
+            var arr = []
+            function set(ele) {
+                var child = ele.children;
+                for (var i = 0; i < child.length; i++) {
+                    arr.push(child[i])
+                    set(child[i])
+                }
+            }
+            return {
+                arr:arr,
+                set:set
+            }
+        }
+        var obj = get()
+        obj.set(father)
+        console.log(obj.arr);
 
         //累加求和
     //     function text(num){
