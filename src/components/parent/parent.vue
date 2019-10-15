@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="add">这是父组件的按钮</button>
-    <Child1 :oneStr="'这是父传子的数据'" :text1="text"></Child1>
+    <Child1 :oneStr="'这是父传子的数据'" ref="childRef" :text1="text"></Child1>
     <br />
     <ButtonCounter>
       Your Profile111
@@ -36,7 +36,10 @@ export default {
     };
   },
   methods: {
-    add() {},
+    add() {
+        this.$refs.childRef.child()
+        console.log(this.$refs);
+    },
     text() {
       console.log("这是父组件中的方法");
     }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 2000px">
+        11
+    </div>
+</body>
+    <script>
+        document.onclick = function(e){
+            e = e || window.e
+            console.log(e.pageX,e.pageY);   //相当于页面的   对于整个页面来说，包括了被卷去的body部分的长度
+            console.log(e.clientX,e.clientY); //相当于视口的   点击位置距离当前body可视区域的x，y坐标
+            console.log(e.screenX,e.screenY); // 相当于屏幕的分辨率的  点击位置距离当前电脑屏幕的x，y坐标
+        }
+    
+    
+    </script>
+</html>

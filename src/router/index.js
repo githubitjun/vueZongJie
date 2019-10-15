@@ -12,12 +12,16 @@ export default new Router({
   routes: [
     {
       path: '/',
+
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
       path:'/child',
       name:'Child',
+      meta:{
+        title:'个人主页'
+      },
       component:Child
     },
     {
@@ -34,6 +38,16 @@ export default new Router({
       path:'/event',
       name:'Event',
       component:()=> import('@/components/event/event.vue')
+    },
+    {
+      path:'/time',
+      name:'Time',
+      component:()=> import('@/components/moment/time.vue')
+    },
+    //
+    {
+      path:'*',
+      redirect:'/child'
     }
   ]
 })

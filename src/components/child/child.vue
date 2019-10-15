@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         child(){
-            console.log('这是自组件的事件');
+            console.log('这是子组件的事件');
             
         },
         parentDChild(){

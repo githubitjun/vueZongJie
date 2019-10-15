@@ -32,35 +32,40 @@ import Person from "../components/slot/slot1";
 export default {
   data() {
     return {
-      num1:1,
-      num:10,
-      tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
-      }
+      num1: 1,
+      num: 10,
+      tableData: [
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1518 弄"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1517 弄"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1519 弄"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路 1516 弄"
+        }
+      ]
+    };
   },
   components: {
     Person
   },
   methods: {
-    handleCurrentChange(val){
-      this.num1 = val
+    handleCurrentChange(val) {
+      this.num1 = val;
     }
-  },
+  }
 };
 </script>
 
@@ -76,10 +81,10 @@ export default {
   left: 500px;
   /* margin-left: -30px; */
 }
-/deep/ .el-pagination__jump {
+/* /deep/ .el-pagination__jump {
   position: absolute;
   left: 700px;
-}
+} */
 /deep/ .el-input__inner {
   border: 0;
 }
@@ -90,5 +95,12 @@ export default {
   font-size: 13px;
   min-width: 35.5px;
   color: #606266;
+}
+</style>
+
+<style>
+ .el-pagination__jump {
+  position: absolute;
+  left: 700px;
 }
 </style>
