@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var obj = new Proxy({}, {
+    //     get: function (target, key, receiver) {
+    //         console.log(`getting ${key}!`);
+    //         return Reflect.get(target, key, receiver);
+    //     },
+    //     set: function (target, key, value, receiver) {
+    //         console.log(`setting ${key}!`);
+    //         return Reflect.set(target, key, value, receiver);
+    //     }
+    // });
+    // console.log(obj);
+    // obj.count = 1
+    // obj.count++
+    
+
+    // var proxy = new Proxy({},{
+    //     get:function(target,property){
+    //         return property
+    //     }
+    // })
+    // var obj = Object.create(proxy)
+    // console.log(obj.time);
+
+
+    // var person = {
+    //     name:'张三'
+    // }
+    // var proxy = new Proxy(person,{
+    //     get:function(target,property){
+    //         if (property in target) {
+    //             return target[property]
+    //         }else {
+    //             return '出错了'
+    //         }
+    //     }
+    // })
+    // console.log(proxy.name);
+    // console.log(proxy.age);
+
+    // 使用get拦截，实现数组读取负数的索引
+    // function createArray(elements){
+    //     let handler = {
+    //         get(target,propKey,receviver){
+    //             let index = Number(propKey)
+    //             console.log(propKey);
+    //             if (index < 0) {
+    //                 propKey = String(target.length + index)
+    //             }
+    //             return Reflect.get(target,propKey,receviver)
+    //         }
+    //     }
+
+    //     // let target = []
+    //     // target.push(elements)
+    //     return new Proxy(elements,handler)
+    // }
+    // let arr = createArray(['a','b','c'])
+    // console.log(arr[-1]);
+
+
+    // const target = Object.defineProperties({}, {
+    //     foo: {
+    //         value: 123,
+    //         writable: false,
+    //         configurable: false
+    //     },
+    // });
+
+
+
+    // ----------------------------
+    // set()
+    // 假定Person对象有一个age属性，该属性应该是一个不大于 200 的整数，那么可以使用Proxy保证age的属性值符合要求。
+    
+    let validator = {
+        set: function(obj,prop,value){
+            if(prop==='age'){
+                if(!Number.isInteger(value)){
+                    throw new TypeError('The age is not an integer');
+                }
+                if (value > 200) {
+                    throw new RangeError('The age seems invalid');
+                }
+            }
+            obj[prop] = value
+        }
+    }
+   
+    let person = new Proxy({},validator)
+    person.age = 101;
+    console.log(person.age);
+    
+
+
+    
+</script>
+
+</html>
