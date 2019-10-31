@@ -47,6 +47,9 @@
             constructor(name, age) {
                 this.name = name
                 this.age = age
+                this.sayHi = function () {
+                    console.log('我是sayHi');
+                }
             }
             say() { //这是一个类的方法,千万不要加function,也就是实例方法,只能由实例化的对象调用
                 return this.name + this.age
@@ -70,7 +73,7 @@
 
         var p = new Person('张三', 20)
         console.log(p.name, p.age);//张三 20
-        
+
         // // hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。 obj.hasOwnProperty(prop) 要检测的属性的 String 字符串形式表示的名称，或者 Symbol。
 
         // console.log(p.say());
@@ -103,9 +106,9 @@
         //子类
         class Square extends Polygon {
             constructor(width, height) {
-                super(width,height,name)
+                super(width, height, name)
                 // super()
-                
+
                 //如果下面的宽高不写的话,super(width,height) 会去拿父类的赋值语句,如果写成了super()也是会去拿父类的赋值语句但是没有值 是undefined,因为super里面没有形参
                 // this.width = width
                 // this.height = height
@@ -115,19 +118,22 @@
             getFatherMethods() {
                 super.sayName(); // 2. 可以通过super调用父类的方法
             }
+            static staticgetFatherMethods() {
+                super.staticsayName(); // 访问父类的静态方法
+            }
             static statigetFatherMethods() {
-               console.log('这是子类的 静态方法');
+                console.log('这是子类的 静态方法');
 
             }
         }
-        var s = new Square(1,2)
-        console.log(s.width,s.height);
+        var s = new Square(1, 2)
+        console.log(s.width, s.height);
         // console.log(s);
         s.getFatherMethods() //Hi 我是父类的张三
         s.sayName() //当然s.sayName()也是可以访问的,但是存在即合理.
         Square.staticsayName() //hi,我是父类 static的
         Square.statigetFatherMethods() //这是子类的 静态方法
-        
+        Square.staticgetFatherMethods() //hi,我是父类 static的
 
     </script>
 </body>
