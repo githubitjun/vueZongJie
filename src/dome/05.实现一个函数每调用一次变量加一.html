@@ -9,43 +9,44 @@
 <body>
     <script>
     //声明一个函数  将这个变量挂载为函数的属性
-    // function text(){
-    //     text.num++;
-    //     console.log(text.num);
-    // }
-    // text.num = 0;
-    // text()
+    function text(){
+        var num1 =  text.num++;
+        console.log(num1);
+        console.log(text.num);
+    }
+    text.num = 0;
+    text()
     // text()
     // text()
     // console.log(text.num);
 
 
-    function Person(name,age){
-        this.name = name
-        this.age = age
-    }
-    Person.prototype = {
-        getName : function (){
-            return this.name
-        },
-        getAge : function (){
-            return this.age
-        }
-    }
+    // function Person(name,age){
+    //     this.name = name
+    //     this.age = age
+    // }
+    // Person.prototype = {
+    //     getName : function (){
+    //         return this.name
+    //     },
+    //     getAge : function (){
+    //         return this.age
+    //     }
+    // }
 
-    var alice = new Person('Alice',10)
-    var bill = new Person('Bill',20)
-    console.log(alice.getName());
+    // var alice = new Person('Alice',10)
+    // var bill = new Person('Bill',20)
+    // console.log(alice.getName());
 
-    Person.prototype.getGreeting = function(){
-        return 'Hi'+this.getName()
-    }
-    console.log(alice.getGreeting());
+    // Person.prototype.getGreeting = function(){
+    //     return 'Hi'+this.getName()
+    // }
+    // console.log(alice.getGreeting());
 
-    alice.displayGreeting = function(){
-        console.log(this.getGreeting());
-    }
-    alice.displayGreeting()
+    // alice.displayGreeting = function(){
+    //     console.log(this.getGreeting());
+    // }
+    // alice.displayGreeting()
     </script>
 </body>
 </html>

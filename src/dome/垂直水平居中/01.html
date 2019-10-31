@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            position: relative;
+        }
+        
+        .children-box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: yellow;
+            margin: auto;
+            height: 100px;
+            width: 100px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- 绝对定位 + left/right/bottom/top + margin -->
+
+    <div id="app">
+
+        <div class="box">
+
+            <div class="children-box"></div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

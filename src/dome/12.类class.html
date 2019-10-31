@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //         在 ES6 规范中，引入了`class` 的概念。使得 JS 开发者终于告别了，直接使用原型对象模仿面向对象中的类和类继承时代。
+        //         但是JS 中并没有一个真正的`class` 原始类型， `class` 仅仅只是对原型对象运用语法糖。所以，只有理解如何使用原型对象实现类和类继承，才能真正地用好`class`。
+        // ** 说白了就是构造函数写起来太麻烦了.用类舒服一些.**
+        //             构造函数的写法
+
+        // function Foo(name, age) {
+        //     this.name = name
+        //     this.age = age
+        // }
+        // Foo.prototype.philosophy = function () {
+        //     console.log('量变是质变的必要准备，质变是量变积累到一定程度的必然结果');
+        // }
+        // // var f = new Foo('张三','19')
+        // // f.philosophy() //量变是质变的必要准备，质变是量变积累到一定程度的必然结果
+
+
+        // // new 关键字的作用,直接写一个函数感受new的作用更加直接.
+        // function textNew(Foo){
+        //     let obj = {} //创建一个对象
+        //     obj.__proto__ = Foo.prototype;
+        //     return function(){ // 调用函数绑定this
+        //         Foo.apply(obj,arguments) //通过arguments来接受参数
+        //         return obj  // 返回新创建的对象 
+        //     }
+
+        // }
+        // var f = textNew(Foo)('张三','20')
+        // console.log(f);
+        // f.philosophy()
+
+        // class是构造函数的语法糖。 即 class 的本质是 构造函数。class的继承 extends  本质 为构造函数的原型链的继承。那么虽然用了class关键字,但是还是最后面运行的时候会转换为构造函数运行
+        class Person { //定义一个名字为Person 的类
+            // 每一个类都必须要有一个constructor,如果没有显示声明,js引擎会自动给它添加一个空的构造函数
+            //定义在constructor内的属性和方法,即定义在this上面.属于实例的属性和方法,否则属于原型的属性和方法
+            constructor(name, age) {
+                this.name = name
+                this.age = age
+            }
+            say() { //这是一个类的方法,千万不要加function,也就是实例方法,只能由实例化的对象调用
+                return this.name + this.age
+            }
+            //静态方法 通过Person.staticShi()直接调用.静态方法可以被子类继承.公有的就可以写成静态方法,是在原型中
+            static staticShi() {
+                console.log('我是一个静态方法');
+            }
+            // 获取当前类名
+            getClassName() {
+                console.log(Person.name)
+            }
+            // 获取get 设置值set
+            get myname() {
+                return 'getter'
+            }
+            set myname(val) {
+                console.log('setter' + val)
+            }
+        }
+
+        var p = new Person('张三', 20)
+        console.log(p.name, p.age);//张三 20
+        
+        // // hasOwnProperty() 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。 obj.hasOwnProperty(prop) 要检测的属性的 String 字符串形式表示的名称，或者 Symbol。
+
+        // console.log(p.say());
+        // console.log(p.hasOwnProperty('name')); // true 验证当前的属性或者方法是实例上面传过来的还是原型链上面的.
+        // console.log(p.hasOwnProperty("say"));  //false
+        // console.log(p.hasOwnProperty("staticShi")); //false
+        // console.log(p.myname); // 直接调用类里面的get方法然后拿到值
+        // console.log(p.myname = "Atoe"); // 直接调用类里面的set方法,执行完代码之后,返回设置的值.
+
+
+        //继承
+        //在构造函数中使用时，super关键字将单独出现，并且必须在使用this关键字之前使用。super关键字也可以用来调用父对象上的函数。
+        //extends关键字用来创建一个普通类或者内建对象的子类。继承的.prototype必须是一个Object 或者 null。
+        class Polygon {
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+                this.name = '张三'
+            }
+            sayName() {
+                console.log('Hi', '我是父类的' + this.name);
+            }
+            //stayic 的是静态方法 只能是Polygon.staticsayName() 直接调用,如果子类调用的话就是  Square.staticsayName() 直接调用 
+            static staticsayName() {
+                console.log('hi,我是父类 static的');
+            }
+        }
+        var f = new Polygon(1, 1)
+        console.log(f.width, f.height);
+        //子类
+        class Square extends Polygon {
+            constructor(width, height) {
+                super(width,height,name)
+                // super()
+                
+                //如果下面的宽高不写的话,super(width,height) 会去拿父类的赋值语句,如果写成了super()也是会去拿父类的赋值语句但是没有值 是undefined,因为super里面没有形参
+                // this.width = width
+                // this.height = height
+
+                // this.name = 'Square'; 
+            }
+            getFatherMethods() {
+                super.sayName(); // 2. 可以通过super调用父类的方法
+            }
+            static statigetFatherMethods() {
+               console.log('这是子类的 静态方法');
+
+            }
+        }
+        var s = new Square(1,2)
+        console.log(s.width,s.height);
+        // console.log(s);
+        s.getFatherMethods() //Hi 我是父类的张三
+        s.sayName() //当然s.sayName()也是可以访问的,但是存在即合理.
+        Square.staticsayName() //hi,我是父类 static的
+        Square.statigetFatherMethods() //这是子类的 静态方法
+        
+
+    </script>
+</body>
+
+</html>

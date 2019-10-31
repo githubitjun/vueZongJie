@@ -410,6 +410,27 @@
     // getKey()
     // getKey()
     // getKey()
+
+    // var i = 0;
+    // for(var j = 0;j<10;j++){
+    //     i++
+    // }
+    // console.log(i,j);
+
+    function CountTest(){
+        this.i = 'a'
+        CountTest.i++
+    }
+    CountTest.i = 0
+    CountTest.getData = function(){
+        console.log(this.i);
+        console.log(CountTest.i);
+    }
+    var oCountTest = new CountTest()
+    console.log(CountTest.i);//1
+    console.log(oCountTest.i);//a
+    CountTest.getData()//1 //1
+
 </script>
 
 </html>
